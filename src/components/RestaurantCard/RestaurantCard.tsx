@@ -1,15 +1,15 @@
-import React from "react";
-import { withStyles } from "@material-ui/core/styles";
-import { CSSProperties } from "@material-ui/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Typography from "@material-ui/core/Typography";
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import { CSSProperties } from '@material-ui/styles';
+import React from 'react';
 
-import { CustomTheme } from "../../style/theme";
+import { CustomTheme } from '../../style/theme';
 
-type ClassNames = "container" | "picture" | "restaurantName" | "address";
+type ClassNames = 'container' | 'picture' | 'restaurantName' | 'address';
 interface OwnProps {
   classes: Record<ClassNames, string>;
   imgSrc: string;
@@ -24,18 +24,9 @@ export const RestaurantCard: React.FC<Props> = (props: Props) => {
   return (
     <Card className={classes.container}>
       <CardActionArea>
-        <CardMedia
-          image={imgSrc}
-          title="Japanese Restaurant"
-          className={classes.picture}
-        />
+        <CardMedia image={imgSrc} title="Chinese Restaurant" className={classes.picture} />
         <CardContent>
-          <Typography
-            gutterBottom
-            variant="h6"
-            component="h2"
-            className={classes.restaurantName}
-          >
+          <Typography gutterBottom variant="h6" component="h2" className={classes.restaurantName}>
             {restaurantName}
           </Typography>
           <Typography variant="body2" className={classes.address}>
@@ -50,17 +41,17 @@ export const RestaurantCard: React.FC<Props> = (props: Props) => {
 const styles = (theme: CustomTheme): Record<ClassNames, CSSProperties> => ({
   container: {
     width: 220,
-    textAlign: "left"
+    textAlign: 'left',
   },
   picture: {
-    height: 128
+    height: 128,
   },
   restaurantName: {
-    fontSize: 15
+    fontSize: 15,
   },
   address: {
-    fontSize: 10
-  }
+    fontSize: 10,
+  },
 });
 
 export default withStyles(styles)(RestaurantCard);
