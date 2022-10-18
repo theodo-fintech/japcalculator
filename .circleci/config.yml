@@ -21,6 +21,8 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      # audit packages version:
+      - run: npm audit
 
       # run tests!
       - run: npm run test
