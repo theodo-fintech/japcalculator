@@ -43,17 +43,21 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
   >({});
 
   const handleChange = (itemName: string, itemKcal: number) => (
-    value: number
+    newValue: number
   ) => {
     setValues({
       ...values,
-      [itemName]: { value, kcal: value * itemKcal },
+      [itemName]: { value: newValue, kcal: newValue * itemKcal },
     });
   };
 
   const result = Object.keys(values).reduce((acc: number, itemName: string) => {
     return acc + values[itemName].kcal;
   }, 0);
+
+  const resetValues = () => {
+    setValues({});
+  };
 
   return (
     <div className={classes.container}>
@@ -80,6 +84,11 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
           <div className={classes.buttonContainer}>
             <Button variant="contained" onClick={sendData(result)}>
               {result} Kcal
+            </Button>
+          </div>
+          <div className={classes.buttonContainer}>
+            <Button variant="contained" onClick={resetValues}>
+              Reset
             </Button>
           </div>
         </div>
