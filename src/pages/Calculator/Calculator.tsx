@@ -38,18 +38,17 @@ type Props = OwnProps;
 export const CalculatorPage: React.FC<Props> = (props: Props) => {
   const { classes } = props;
 
-  const [values, setValues] = useState<
-    { [k in string]: { value: number; kcal: number } }
-  >({});
+  const [values, setValues] = useState<{
+    [k in string]: { value: number; kcal: number };
+  }>({});
 
-  const handleChange = (itemName: string, itemKcal: number) => (
-    value: number
-  ) => {
-    setValues({
-      ...values,
-      [itemName]: { value, kcal: value * itemKcal },
-    });
-  };
+  const handleChange =
+    (itemName: string, itemKcal: number) => (value: number) => {
+      setValues({
+        ...values,
+        [itemName]: { value, kcal: value * itemKcal },
+      });
+    };
 
   const result = Object.keys(values).reduce((acc: number, itemName: string) => {
     return acc + values[itemName].kcal;
@@ -62,6 +61,7 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
           <img src={kanjiLeft} alt="kanji" />
           <div className={classes.barSpacer} />
         </div>
+        <div>Hello</div>
         <div className={classes.calculatorInnerContainer}>
           <div className={classes.scrollContainer}>
             <div className={classes.mainFoodItems}>
