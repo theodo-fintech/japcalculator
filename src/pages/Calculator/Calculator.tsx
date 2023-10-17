@@ -61,7 +61,7 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
           <img src={kanjiLeft} alt="kanji" />
           <div className={classes.barSpacer} />
         </div>
-        <div>Hello</div>
+        <div>Hello world</div>
         <div className={classes.calculatorInnerContainer}>
           <div className={classes.scrollContainer}>
             <div className={classes.mainFoodItems}>
