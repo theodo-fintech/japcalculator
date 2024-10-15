@@ -50,6 +50,10 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
       [itemName]: { value, kcal: value * itemKcal },
     });
   };
+  
+  const handleReset = () => {
+    setValues({});
+  };
 
   const result = Object.keys(values).reduce((acc: number, itemName: string) => {
     return acc + values[itemName].kcal;
@@ -80,6 +84,9 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
           <div className={classes.buttonContainer}>
             <Button variant="contained" onClick={sendData(result)}>
               {result} Kcal
+            </Button>
+            <Button variant="outlined" color="secondary" onClick={handleReset}>
+              Reset
             </Button>
           </div>
         </div>
