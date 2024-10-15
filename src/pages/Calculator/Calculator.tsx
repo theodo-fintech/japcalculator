@@ -29,6 +29,7 @@ type ClassNames =
   | "buttonContainer"
   | "lateralBar"
   | "barSpacer";
+  
 interface OwnProps {
   classes: Record<ClassNames, string>;
 }
@@ -38,18 +39,17 @@ type Props = OwnProps;
 export const CalculatorPage: React.FC<Props> = (props: Props) => {
   const { classes } = props;
 
-  const [values, setValues] = useState<
-    { [k in string]: { value: number; kcal: number } }
-  >({});
+  const [values, setValues] = useState<{
+    [k in string]: { value: number; kcal: number };
+  }>({});
 
-  const handleChange = (itemName: string, itemKcal: number) => (
-    value: number
-  ) => {
-    setValues({
-      ...values,
-      [itemName]: { value, kcal: value * itemKcal },
-    });
-  };
+  const handleChange =
+    (itemName: string, itemKcal: number) => (value: number) => {
+      setValues({
+        ...values,
+        [itemName]: { value, kcal: value * itemKcal },
+      });
+    };
 
   const result = Object.keys(values).reduce((acc: number, itemName: string) => {
     return acc + values[itemName].kcal;
@@ -59,7 +59,7 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
     <div className={classes.container}>
       <div className={classes.calculatorContainer}>
         <div className={classes.lateralBar}>
-          <img src={kanjiLeft} alt="kanji" />
+          <img src={kanjiLeft} alt="Decorative kanji left" aria-hidden="true" />
           <div className={classes.barSpacer} />
         </div>
         <div className={classes.calculatorInnerContainer}>
@@ -78,21 +78,39 @@ export const CalculatorPage: React.FC<Props> = (props: Props) => {
             </div>
           </div>
           <div className={classes.buttonContainer}>
-            <Button variant="contained" onClick={sendData(result)}>
+            <Button
+              variant="contained"
+              onClick={() => sendData(result)}
+              aria-label={`Submit total calorie count: ${result} Kcal`}
+            >
               {result} Kcal
             </Button>
           </div>
         </div>
         <div className={classes.lateralBar}>
           <div className={classes.barSpacer} />
-          <img src={kanjiRight} alt="kanji" />
+          <img
+            src={kanjiRight}
+            alt="Decorative kanji right"
+            aria-hidden="true"
+          />
         </div>
       </div>
       <div className={classes.circleContainer}>
-        <div className={classes.redCircle} />
+        <div className={classes.redCircle} aria-hidden="true" />
       </div>
-      <img className={classes.kanjiSun} src={kanjiSun} alt="kanji sun" />
-      <img className={classes.kanjiBook} src={kanjiBook} alt="kanji book" />
+      <img
+        className={classes.kanjiSun}
+        src={kanjiSun}
+        alt="Decorative kanji sun"
+        aria-hidden="true"
+      />
+      <img
+        className={classes.kanjiBook}
+        src={kanjiBook}
+        alt="Decorative kanji book"
+        aria-hidden="true"
+      />
     </div>
   );
 };
