@@ -26,7 +26,7 @@ export const RestaurantCard: React.FC<Props> = (props: Props) => {
       <CardActionArea>
         <CardMedia
           image={imgSrc}
-          title="Japanese Restaurant"
+          title="Japanese Restaurant !"
           className={classes.picture}
         />
         <CardContent>
